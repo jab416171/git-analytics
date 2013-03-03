@@ -1,1 +1,9 @@
-{{ repo }}
+<h1>{{ repo.name }} </h1>
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'git:submit' repo.id %}" method="post">
+		{% csrf_token %}
+		<input type="text" name="name" id="name" />
+		<label for="name">Name</label>
+		<input type="submit" value="Submit" />
+</form>
