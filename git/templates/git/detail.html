@@ -1,9 +1,5 @@
-<h1>{{ repo.name }} </h1>
-{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+<!doctype html>
+<h2>{{ repo.name }}</h2>
+<h3>{{ repo.url }}</h3>
 
-<form action="{% url 'git:submit' repo.id %}" method="post">
-		{% csrf_token %}
-		<input type="text" name="name" id="name" />
-		<label for="name">Name</label>
-		<input type="submit" value="Submit" />
-</form>
+<a href="{% url 'git:configure' repo.id %}">Edit</a>

@@ -9,9 +9,9 @@ def index(request):
 		git_repos = repo.objects.order_by('-updated')
 		return render(request, 'git/index.html', {'git_repos': git_repos})
 
-def detail(request, repo_id):
+def configure(request, repo_id):
 		repository = get_object_or_404(repo, pk=repo_id)
-		return render(request, 'git/detail.html', {'repo': repository})
+		return render(request, 'git/configure.html', {'repo': repository})
 
 def submit(request, repo_id):
 		repository = get_object_or_404(repo, pk=repo_id)
@@ -25,3 +25,8 @@ def submit(request, repo_id):
 		else:
 				repository.save()
 				return HttpResponseRedirect(reverse('git:detail', args=(repository.id,)))
+
+
+def detail(request, repo_id):
+		repository = get_object_or_404(repo, pk=repo_id)
+		return render(request, 'git/detail.html', {'repo': repository})
