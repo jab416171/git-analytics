@@ -1,0 +1,9 @@
+{% if git_repos %}
+		<ul>
+				{% for repo in git_repos %}
+				<li><a href="{% url 'git:detail' repo.id %}">{{ repo.name }}</a></li>
+				{% endfor %}
+		</ul>
+{% else %}
+		<h1>There are no repos</h1>
+{% endif %}
